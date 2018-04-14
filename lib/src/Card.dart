@@ -14,12 +14,26 @@ class Card {
 
     Card(String this.imageName, int this.value, String this.suit);
 
-    int currentValue(List<Card> hand) {
+    int currentValue(int otherValue) {
         return value;
     }
 
     static int sumCards(List<Card> cards) {
-        throw "TODO";
+        int ret = 0;
+        List<AceCard> aces = new List<AceCard>();
+        for(Card c in cards) {
+            if(c is AceCard) {
+                aces.add(c);
+            }else {
+                ret += c.currentValue(ret);
+            }
+        }
+
+        for(AceCard ace in aces) {
+            ret += ace.currentValue(ret);
+        }
+
+        return ret;
     }
 
     String get name {
@@ -46,10 +60,10 @@ class Card {
 
         for(int i = 1; i<14; i++) {
             if(i == 1) {
-                ret.add(new AceCard("hearts1",1,HEART,11));
-                ret.add(new AceCard("spades1",1,SPADES, 11));
-                ret.add(new AceCard("clubs1",1,CLUBS, 11));
-                ret.add(new AceCard("diamonds1",1,DIAMONDS, 11));
+                ret.add(new AceCard("hearts1",HEART));
+                ret.add(new AceCard("spades1",SPADES,));
+                ret.add(new AceCard("clubs1",CLUBS));
+                ret.add(new AceCard("diamonds1",DIAMONDS));
             }else {
                 ret.add(new Card("spades${i}",i,HEART));
                 ret.add(new Card("spades${i}",i,SPADES));
@@ -65,9 +79,10 @@ class Card {
 
 //value becomes a get
 class AceCard extends Card {
-    int altValue;
+    int altValue = 11;
+    int value = 1;
 
-  AceCard(String imageName, int value, String suit,  int this.altValue) : super(imageName, value, suit);
+  AceCard(String imageName,String suit) : super(imageName, 1, suit);
 
     @override
     String get name {
@@ -75,7 +90,10 @@ class AceCard extends Card {
     }
 
     @override
-    int currentValue(List<Card> hand) {
-        throw "TODO: calc value based on hand";
+    int currentValue(int otherValues) {
+        if(otherValues + altValue > 21) {
+            return value;
+        }
+        return altValue;
     }
 }
