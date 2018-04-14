@@ -2,7 +2,7 @@ name: BlackJack
 description: A starting point for Dart libraries or applications.
 version: 0.0.1
 #homepage: https://www.example.com
-#author: jenny <email@example.com>
+#author: JR <email@example.com>
 
 environment:
   sdk: '>=1.20.1 <2.0.0'
@@ -11,4 +11,10 @@ environment:
 #  path: ^1.4.1
 
 dev_dependencies:
-  test: ^0.12.0
+  browser: ^0.10.0
+  dart_to_js_script_rewriter: ^1.0.1
+  RenderingLib:
+        git: git://github.com/jadedResearcher/RenderingLib.git
+
+
+

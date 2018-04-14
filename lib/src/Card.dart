@@ -30,7 +30,7 @@ class Card {
     static List<Card> getFreshDeck() {
         List<Card> ret = new List<Card>();
 
-        for(int i = 1; i<13; i++) {
+        for(int i = 1; i<14; i++) {
             if(i == 1) {
                 ret.add(new AceCard("hearts1",1,HEART,11));
                 ret.add(new AceCard("spades1",1,SPADES, 11));
@@ -55,8 +55,9 @@ class AceCard extends Card {
 
   AceCard(String imageName, int value, String suit,  int this.altValue) : super(imageName, value, suit);
 
+    @override
     String get name {
-        "Ace of $suit";
+        return "Ace of $suit";
     }
 
     @override

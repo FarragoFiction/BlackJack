@@ -3,6 +3,6 @@
 /// More dartdocs go here.
 library BlackJack;
 
-export 'src/BlackJack_base.dart';
+//export 'src/BlackJack_base.dart';
 
-// TODO: Export any libraries intended for clients of this package.
+export "src/Card.dart";
