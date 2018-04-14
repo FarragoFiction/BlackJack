@@ -6,6 +6,7 @@ Element container;
 main() {
     container = querySelector("#output");
     cards = Card.getFreshDeck();
+    cards = Card.shuffleDeck(cards);
     testThingy();
 }
 

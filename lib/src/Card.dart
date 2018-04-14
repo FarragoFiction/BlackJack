@@ -1,3 +1,5 @@
+import 'package:RenderingLib/RendereringLib.dart';
+
 class Card {
     static String HEART = "Hearts";
     static String DIAMONDS = "Diamonds";
@@ -25,6 +27,18 @@ class Card {
         if(value == 12) return "Queen of $suit";
         if(value == 13) return "King of $suit";
         return "$value of $suit";
+    }
+
+    static List<Card> shuffleDeck(List<Card> cards) {
+            List<Card> thingy = new List<Card>.from(cards);
+            List<Card> ret = new List<Card>();
+            Random rand = new Random();
+            while(thingy.length > 0) {
+                Card chosen = rand.pickFrom(thingy);
+                ret.add(chosen);
+                thingy.remove(chosen);
+            }
+            return ret;
     }
 
     static List<Card> getFreshDeck() {
