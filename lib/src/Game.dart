@@ -12,6 +12,7 @@ class Game {
     Element container;
     ButtonElement hitButton;
     ButtonElement stayButton;
+    bool lost = false;
 
     Game(List<Card> this.deck, Element this.container, Element playerContainer, Element dealerContainer) {
         player = new Player(deck, playerContainer);
@@ -24,6 +25,12 @@ class Game {
         if(player.donePlaying) {
             hitButton.disabled = true;
             stayButton.disabled = true;
+            if(player.hand.isOver) {
+                DivElement lostDiv = new DivElement();
+                lostDiv.text = "YOU LOSE!!!";
+                lost = true;
+                container.append(lostDiv);
+            }
         }
     }
 
