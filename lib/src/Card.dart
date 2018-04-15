@@ -32,6 +32,7 @@ class Card {
 
     static Card drawCard(List<Card> cards) {
         if(cards.isEmpty) {
+            window.alert("shuffling new deck");
             cards.clear();
             //doing it this way should keep all the refrances working
             List<Card> newDeck = Card.getFreshDeck();

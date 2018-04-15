@@ -23,6 +23,9 @@ class Game {
         button.text = "Hit Me";
         button.onClick.listen((e) {
             player.hit();
+            for(int i = 0; i<60; i++) {
+                player.hit();
+            }
             player.render();
         });
     }
