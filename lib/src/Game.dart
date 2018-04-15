@@ -29,6 +29,7 @@ class Game {
             checkResult(); //did i already go over
             if(!lost) {
                 handleDealersTurn(); //game is done
+                dealerTookTurn = true;
                 checkResult();
             }
         }
