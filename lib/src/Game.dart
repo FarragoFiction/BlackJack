@@ -10,6 +10,7 @@ class Game {
     Dealer dealer;
     List<Card> deck;
     Element container;
+    ButtonElement hitButton;
 
     Game(List<Card> this.deck, Element this.container, Element playerContainer, Element dealerContainer) {
         player = new Player(deck, playerContainer);
@@ -17,15 +18,29 @@ class Game {
         renderHitButton();
     }
 
+    void syncHitButton() {
+        if(player.donePlaying) {
+            hitButton.disabled = true;
+        }
+    }
+
+    void renderStayButton() {
+        ButtonElement stayButton = new ButtonElement();
+        container.append(stayButton);
+        stayButton.text = "I'll Stay";
+        stayButton.onClick.listen((e) {
+            player.stay();
+            syncHitButton();
+        });
+    }
+
     void renderHitButton() {
-        ButtonElement button = new ButtonElement();
-        container.append(button);
-        button.text = "Hit Me";
-        button.onClick.listen((e) {
+        hitButton = new ButtonElement();
+        container.append(hitButton);
+        hitButton.text = "Hit Me";
+        hitButton.onClick.listen((e) {
             player.hit();
-            for(int i = 0; i<60; i++) {
-                player.hit();
-            }
+            syncHitButton();
             player.render();
         });
     }
