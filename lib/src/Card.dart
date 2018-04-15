@@ -1,4 +1,5 @@
 import 'package:RenderingLib/RendereringLib.dart';
+import "dart:html";
 
 class Card {
     static String HEART = "Hearts";
@@ -8,14 +9,32 @@ class Card {
 
 
     String folder = "images/Cards/";
-    String imageName;
     int value;
     String suit;
 
-    Card(String this.imageName, int this.value, String this.suit);
+    Card(int this.value, String this.suit);
 
     int currentValue(int otherValue) {
+        //aces do their own thing
+        if(value >10) return 10;
         return value;
+    }
+
+    //TODO render this as a canvas thingy.
+    void render(Element container, bool visible) {
+        DivElement div = new DivElement();
+        String visibleString = "Hidden";
+        if(visible) visibleString = "Visible";
+        print("going to render $visibleString $name");
+        div.setInnerHtml("$visibleString $name");
+        container.append(div);
+    }
+
+    static Card drawCard(List<Card> cards) {
+        if(cards.isEmpty) return null;
+        Card ret = cards[0];
+        cards.removeAt(0);
+        return ret;
     }
 
     static int sumCards(List<Card> cards) {
@@ -60,15 +79,15 @@ class Card {
 
         for(int i = 1; i<14; i++) {
             if(i == 1) {
-                ret.add(new AceCard("hearts1",HEART));
-                ret.add(new AceCard("spades1",SPADES,));
-                ret.add(new AceCard("clubs1",CLUBS));
-                ret.add(new AceCard("diamonds1",DIAMONDS));
+                ret.add(new AceCard(HEART));
+                ret.add(new AceCard(SPADES,));
+                ret.add(new AceCard(CLUBS));
+                ret.add(new AceCard(DIAMONDS));
             }else {
-                ret.add(new Card("spades${i}",i,HEART));
-                ret.add(new Card("spades${i}",i,SPADES));
-                ret.add(new Card("spades${i}",i,CLUBS));
-                ret.add(new Card("spades${i}",i,DIAMONDS));
+                ret.add(new Card(i,HEART));
+                ret.add(new Card(i,SPADES));
+                ret.add(new Card(i,CLUBS));
+                ret.add(new Card(i,DIAMONDS));
             }
         }
 
@@ -82,7 +101,7 @@ class AceCard extends Card {
     int altValue = 11;
     int value = 1;
 
-  AceCard(String imageName,String suit) : super(imageName, 1, suit);
+  AceCard(String suit) : super(1, suit);
 
     @override
     String get name {

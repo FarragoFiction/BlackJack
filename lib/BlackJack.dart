@@ -6,3 +6,4 @@ library BlackJack;
 //export 'src/BlackJack_base.dart';
 
 export "src/Card.dart";
+export "src/Game.dart";

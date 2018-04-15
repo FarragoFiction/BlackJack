@@ -1,35 +1,56 @@
 import 'package:BlackJack/BlackJack.dart';
 import 'package:RenderingLib/RendereringLib.dart';
 import "dart:html";
-List<Card> cards;
 Element container;
+Game game;
+Element playerContainer;
+Element dealerContainer;
 main() {
     container = querySelector("#output");
-    cards = Card.getFreshDeck();
+    setUpPlayingField();
+    List<Card> cards = Card.getFreshDeck();
     cards = Card.shuffleDeck(cards);
+    game = new Game(cards);
     //testThingy();
-    testHand();
+    displayStartGame();
+}
+
+void setUpPlayingField() {
+    TableElement table = new TableElement();
+    TableRowElement tr = new TableRowElement();
+    table.append(tr);
+    playerContainer = new TableCellElement();
+    dealerContainer = new TableCellElement();
+    tr.append(playerContainer);
+    tr.append(dealerContainer);
+    container.append(table);
+}
+
+void displayStartGame() {
+    game.player.hand.render(playerContainer);
+    game.dealer.hand.render(dealerContainer);
+
 }
 
 void testHand() {
     DivElement d = new DivElement();
     container.append(d);
-    d.text = ",${cards[0].name}";
+    d.text = "${game.deck[0].name}";
 
     DivElement d2 = new DivElement();
     container.append(d2);
-    d2.text = ",${cards[1].name}";
+    d2.text = "${game.deck[1].name}";
 
     DivElement d3 = new DivElement();
-    container.append(d2);
-    d3.text = ",${Card.sumCards(<Card>[cards[0], cards[1]])}";
+    container.append(d3);
+    d3.text = "Value: ${Card.sumCards(<Card>[game.deck[0], game.deck[1]])}";
 }
 
 void testThingy() {
-    for(Card c in cards) {
+    for(Card c in game.deck) {
         DivElement d = new DivElement();
         container.append(d);
-        d.text = ",${c.name}";
+        d.text = "${c.name}";
 
     }
 }
