@@ -64,6 +64,7 @@ class Game {
     }
 
     void handleDealersTurn() {
+        print("handling dealers turn");
         dealer.takeTurn(player.hand.value);
     }
 
@@ -84,7 +85,6 @@ class Game {
         hitButton.onClick.listen((e) {
             player.hit();
             syncHitButton();
-            player.render();
         });
     }
 

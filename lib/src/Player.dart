@@ -13,8 +13,10 @@ class Player {
     }
 
     void hit() {
+        print("hit me");
         if(!donePlaying) {
             hand.hit();
+            render();
             if(hand.isOver21) {
                 donePlaying = true;
             }
