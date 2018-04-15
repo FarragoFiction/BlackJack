@@ -57,14 +57,14 @@ class Game {
         }else if(dealer.hand.isOver21) {
             youWin();
         }else if(dealer.hand.value > player.hand.value) {
-            youLose();
+            if(dealerTookTurn) youLose();
         }else if(player.hand.value > dealer.hand.value) {
-            youWin();
+            if(dealerTookTurn) youWin();
         }
     }
 
     void handleDealersTurn() {
-
+        dealer.takeTurn(player.hand.value);
     }
 
     void renderStayButton() {
