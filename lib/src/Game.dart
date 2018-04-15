@@ -11,21 +11,24 @@ class Game {
     List<Card> deck;
     Element container;
     ButtonElement hitButton;
+    ButtonElement stayButton;
 
     Game(List<Card> this.deck, Element this.container, Element playerContainer, Element dealerContainer) {
         player = new Player(deck, playerContainer);
         dealer = new Dealer(deck, dealerContainer);
         renderHitButton();
+        renderStayButton();
     }
 
     void syncHitButton() {
         if(player.donePlaying) {
             hitButton.disabled = true;
+            stayButton.disabled = true;
         }
     }
 
     void renderStayButton() {
-        ButtonElement stayButton = new ButtonElement();
+        stayButton = new ButtonElement();
         container.append(stayButton);
         stayButton.text = "I'll Stay";
         stayButton.onClick.listen((e) {
