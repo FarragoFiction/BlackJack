@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8f383894-d1c7-4e2c-85d8-bb0ad6634aeb" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/index.html" afterPath="$PROJECT_DIR$/example/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/src/Dealer.dart" afterPath="$PROJECT_DIR$/lib/src/Dealer.dart" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/src/Game.dart" afterPath="$PROJECT_DIR$/lib/src/Game.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/src/Hand.dart" afterPath="$PROJECT_DIR$/lib/src/Hand.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/src/Player.dart" afterPath="$PROJECT_DIR$/lib/src/Player.dart" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -79,8 +75,8 @@
       <file leaf-file-name="Game.dart" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/src/Game.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="50" column="23" lean-forward="false" selection-start-line="50" selection-start-column="23" selection-end-line="50" selection-end-column="23" />
+            <state relative-caret-position="210">
+              <caret line="50" column="9" lean-forward="false" selection-start-line="50" selection-start-column="9" selection-end-line="50" selection-end-column="9" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
               </folding>
@@ -654,8 +650,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/src/Game.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="50" column="23" lean-forward="false" selection-start-line="50" selection-start-column="23" selection-end-line="50" selection-end-column="23" />
+        <state relative-caret-position="210">
+          <caret line="50" column="9" lean-forward="false" selection-start-line="50" selection-start-column="9" selection-end-line="50" selection-end-column="9" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
           </folding>

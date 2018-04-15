@@ -13,6 +13,7 @@ class Game {
     ButtonElement hitButton;
     ButtonElement stayButton;
     bool lost = false;
+    bool dealerTookTurn = false;
 
     Game(List<Card> this.deck, Element this.container, Element playerContainer, Element dealerContainer) {
         player = new Player(deck, playerContainer);
@@ -26,8 +27,10 @@ class Game {
             hitButton.disabled = true;
             stayButton.disabled = true;
             checkResult(); //did i already go over
-            handleDealersTurn(); //game is done
-            checkResult();
+            if(!lost) {
+                handleDealersTurn(); //game is done
+                checkResult();
+            }
         }
     }
 
@@ -40,15 +43,17 @@ class Game {
     }
 
     void youWin() {
-        DivElement resultsDiv = new DivElement();
-        resultsDiv.text = "YOU WIN!!!";
-        lost = false;
-        container.append(resultsDiv);
+        if(dealerTookTurn) {
+            DivElement resultsDiv = new DivElement();
+            resultsDiv.text = "YOU WIN!!!";
+            lost = false;
+            container.append(resultsDiv);
+        }
     }
 
     void checkResult() {
         if(player.hand.isOver21) {
-            youLose(); 
+            youLose();
         }else if(dealer.hand.isOver21) {
             youWin();
         }else if(dealer.hand.value > player.hand.value) {
