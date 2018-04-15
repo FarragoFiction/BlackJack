@@ -16,7 +16,7 @@ class Game {
 
     Game(List<Card> this.deck, Element this.container, Element playerContainer, Element dealerContainer) {
         player = new Player(deck, playerContainer);
-        dealer = new Dealer(deck, dealerContainer);
+        dealer = new Dealer(new Random().nextDouble(),deck, dealerContainer);
         renderHitButton();
         renderStayButton();
     }
@@ -25,13 +25,41 @@ class Game {
         if(player.donePlaying) {
             hitButton.disabled = true;
             stayButton.disabled = true;
-            if(player.hand.isOver) {
-                DivElement lostDiv = new DivElement();
-                lostDiv.text = "YOU LOSE!!!";
-                lost = true;
-                container.append(lostDiv);
-            }
+            checkResult(); //did i already go over
+            handleDealersTurn(); //game is done
+            checkResult();
         }
+    }
+
+    void youLose() {
+        DivElement resultsDiv = new DivElement();
+        resultsDiv.text = "YOU LOSE!!!";
+        lost = true;
+        container.append(resultsDiv);
+
+    }
+
+    void youWin() {
+        DivElement resultsDiv = new DivElement();
+        resultsDiv.text = "YOU WIN!!!";
+        lost = false;
+        container.append(resultsDiv);
+    }
+
+    void checkResult() {
+        if(player.hand.isOver21) {
+            youLose(); 
+        }else if(dealer.hand.isOver21) {
+            youWin();
+        }else if(dealer.hand.value > player.hand.value) {
+            youLose();
+        }else if(player.hand.value > dealer.hand.value) {
+            youWin();
+        }
+    }
+
+    void handleDealersTurn() {
+
     }
 
     void renderStayButton() {

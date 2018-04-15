@@ -20,7 +20,7 @@ class Hand {
         return Card.sumCards(cardsInHand);
     }
 
-    bool get isOver {
+    bool get isOver21 {
         return value >21;
     }
 

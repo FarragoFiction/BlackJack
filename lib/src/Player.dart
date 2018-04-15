@@ -15,7 +15,7 @@ class Player {
     void hit() {
         if(!donePlaying) {
             hand.hit();
-            if(hand.isOver) {
+            if(hand.isOver21) {
                 donePlaying = true;
             }
         }
