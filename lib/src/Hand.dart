@@ -34,7 +34,6 @@ class Hand {
     }
 
     void render(Element container) {
-        container.setInnerHtml("");
         DivElement div = new DivElement();
         container.append(div);
         div.setInnerHtml("Value: ${value}");

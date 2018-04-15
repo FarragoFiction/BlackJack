@@ -5,18 +5,26 @@ Element container;
 Game game;
 Element playerContainer;
 Element dealerContainer;
+Element infoContainer;
 main() {
     container = querySelector("#output");
-    setUpPlayingField();
     List<Card> cards = Card.getFreshDeck();
     cards = Card.shuffleDeck(cards);
-    game = new Game(cards);
+    setUpPlayingField();
+
+    game = new Game(cards, infoContainer, playerContainer, dealerContainer);
+
     //testThingy();
     displayStartGame();
 }
 
 void setUpPlayingField() {
     TableElement table = new TableElement();
+    TableRowElement tr2 = new TableRowElement();
+    infoContainer = new TableCellElement();
+    tr2.append(infoContainer);
+    table.append(tr2);
+
     TableRowElement tr = new TableRowElement();
     table.append(tr);
     playerContainer = new TableCellElement();
@@ -27,8 +35,8 @@ void setUpPlayingField() {
 }
 
 void displayStartGame() {
-    game.player.hand.render(playerContainer);
-    game.dealer.hand.render(dealerContainer);
+    game.player.render();
+    game.dealer.render();
 
 }
 

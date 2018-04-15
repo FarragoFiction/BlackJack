@@ -31,7 +31,12 @@ class Card {
     }
 
     static Card drawCard(List<Card> cards) {
-        if(cards.isEmpty) return null;
+        if(cards.isEmpty) {
+            cards.clear();
+            //doing it this way should keep all the refrances working
+            List<Card> newDeck = Card.getFreshDeck();
+            cards.addAll(newDeck);
+        }
         Card ret = cards[0];
         cards.removeAt(0);
         return ret;
