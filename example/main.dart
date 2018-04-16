@@ -12,10 +12,14 @@ main() {
     cards = Card.shuffleDeck(cards);
     setUpPlayingField();
 
-    game = new Game(cards, infoContainer, playerContainer, dealerContainer);
+    game = new Game(cards, infoContainer, playerContainer, dealerContainer, finishGame);
 
     //testThingy();
     displayStartGame();
+}
+
+void finishGame() {
+    window.alert("game is over");
 }
 
 void setUpPlayingField() {
@@ -37,7 +41,6 @@ void setUpPlayingField() {
 void displayStartGame() {
     game.player.render();
     game.dealer.render();
-
 }
 
 void testHand() {

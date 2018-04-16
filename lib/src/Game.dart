@@ -14,8 +14,8 @@ class Game {
     ButtonElement stayButton;
     bool lost = false;
     bool dealerTookTurn = false;
-
-    Game(List<Card> this.deck, Element this.container, Element playerContainer, Element dealerContainer) {
+    Action callBack;
+    Game(List<Card> this.deck, Element this.container, Element playerContainer, Element dealerContainer,Action this.callBack) {
         player = new Player(deck, playerContainer);
         dealer = new Dealer(new Random().nextDouble(),deck, dealerContainer);
         renderHitButton();
@@ -40,7 +40,7 @@ class Game {
         resultsDiv.text = "YOU LOSE!!!";
         lost = true;
         container.append(resultsDiv);
-
+        callBack();
     }
 
     void youWin() {
@@ -49,6 +49,7 @@ class Game {
             resultsDiv.text = "YOU WIN!!!";
             lost = false;
             container.append(resultsDiv);
+            callBack();
         }
     }
 
