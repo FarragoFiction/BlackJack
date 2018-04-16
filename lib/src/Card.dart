@@ -1,5 +1,6 @@
 import 'package:RenderingLib/RendereringLib.dart';
 import "dart:html";
+import "dart:async";
 
 class Card {
     static String HEART = "Hearts";
@@ -7,12 +8,30 @@ class Card {
     static String CLUBS = "Clubs";
     static String SPADES = "Spades";
 
+    int width = 322;
+    int height = 450;
+    //means i need to rerender
+    bool dirty = false;
+
+    //cahced for your convinience
+    CanvasElement canvas;
+
 
     String folder = "images/Cards/";
+    String blankCard = "Base.png";
+    String flippedCard = "Back.png";
     int value;
     String suit;
 
-    Card(int this.value, String this.suit);
+    String get blankCardPath => "${folder}${blankCard}";
+    String get backCardPath => "${folder}${flippedCard}";
+    int get scaledWidth => (width*scale).round();
+    int get scaledHeight => (height*scale).round();
+    double scale;
+
+
+    //cards are actually p big
+    Card(int this.value, String this.suit, {double this.scale:0.33});
 
     int currentValue(int otherValue) {
         //aces do their own thing
@@ -20,14 +39,28 @@ class Card {
         return value;
     }
 
-    //TODO render this as a canvas thingy.
-    void render(Element container, bool visible) {
+    Future<Null> render(Element container, bool visible) async {
         DivElement div = new DivElement();
         String visibleString = "Hidden";
         if(visible) visibleString = "Visible";
         print("going to render $visibleString $name");
         div.setInnerHtml("$visibleString $name");
         container.append(div);
+
+        if(canvas != null && !dirty) {
+            div.append(canvas);
+        }
+        if(canvas == null || dirty ) {
+            CanvasElement fullCanvas = new CanvasElement(width: width, height: height);
+            canvas = new CanvasElement(width: scaledWidth, height: scaledHeight);
+            div.append(canvas);
+            if (visible) {
+                await Renderer.drawWhateverFuture(fullCanvas, blankCardPath);
+            } else {
+                await Renderer.drawWhateverFuture(fullCanvas, backCardPath);
+            }
+            canvas.context2D.drawImageScaled(fullCanvas, 0, 0, scaledWidth, scaledHeight);
+        }
     }
 
     static Card drawCard(List<Card> cards) {

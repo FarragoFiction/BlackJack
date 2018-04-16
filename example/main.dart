@@ -1,12 +1,18 @@
 import 'package:BlackJack/BlackJack.dart';
 import 'package:RenderingLib/RendereringLib.dart';
 import "dart:html";
+import "dart:async";
 Element container;
 Game game;
 Element playerContainer;
 Element dealerContainer;
 Element infoContainer;
 main() {
+    start();
+}
+
+Future<Null> start() async{
+    await Loader.preloadManifest();
     container = querySelector("#output");
     List<Card> cards = Card.getFreshDeck();
     cards = Card.shuffleDeck(cards);
