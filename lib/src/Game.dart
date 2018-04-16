@@ -58,7 +58,7 @@ class Game {
             youLose();
         }else if(dealer.hand.isOver21) {
             youWin();
-        }else if(dealer.hand.value > player.hand.value) {
+        }else if(dealer.hand.value >= player.hand.value) {
             if(dealerTookTurn) youLose();
         }else if(player.hand.value > dealer.hand.value) {
             if(dealerTookTurn) youWin();
