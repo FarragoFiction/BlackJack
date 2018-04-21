@@ -27,6 +27,11 @@ class Game {
         renderStayButton();
     }
 
+    void start() {
+        player.render();
+        dealer.render();
+    }
+
     void syncHitButton() {
         if(player.donePlaying) {
             hitButton.disabled = true;

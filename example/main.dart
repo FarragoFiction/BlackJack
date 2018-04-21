@@ -16,8 +16,7 @@ Future<Null> start() async{
     cards = Card.shuffleDeck(cards);
 
     game = new Game(cards,container, finishGame);
-    //testThingy();
-    displayStartGame();
+    game.start();
 }
 
 void finishGame() {
