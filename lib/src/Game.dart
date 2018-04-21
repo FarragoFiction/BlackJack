@@ -20,6 +20,7 @@ class Game {
     bool dealerTookTurn = false;
     Action callBack;
     Game(List<Card> this.deck, Element this.container,Action this.callBack) {
+        deck.shuffle(new Random());
         setUpPlayingField();
         player = new Player(deck, playerContainer);
         dealer = new Dealer(new Random().nextDouble(),deck, dealerContainer);
