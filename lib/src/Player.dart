@@ -27,6 +27,10 @@ class Player {
         donePlaying = true;
     }
 
+    void flipCards() {
+        hand.flipCards(container);
+    }
+
     void render() {
         container.setInnerHtml("");
         container.setInnerHtml("Player");

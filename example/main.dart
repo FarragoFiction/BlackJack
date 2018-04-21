@@ -39,8 +39,8 @@ void setUpPlayingField() {
     table.append(tr);
     playerContainer = new TableCellElement();
     dealerContainer = new TableCellElement();
-    tr.append(playerContainer);
     tr.append(dealerContainer);
+    tr.append(playerContainer);
     container.append(table);
 }
 

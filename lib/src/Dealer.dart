@@ -45,7 +45,7 @@ class Dealer extends Player{
       }else if(stopAt == low) {
           div.setInnerHtml("Better not risk it.");
       }else {
-
+          div.setInnerHtml("Better follow my strategy.");
       }
   }
 

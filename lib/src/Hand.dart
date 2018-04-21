@@ -33,6 +33,12 @@ class Hand {
         visibleCards.add(Card.drawCard(deck));
     }
 
+    void flipCards(Element container) {
+        visibleCards.add(invisibleCard);
+        invisibleCard = null;
+        render(container);
+    }
+
     void render(Element container) {
         DivElement div = new DivElement();
         div.classes.add("hand");

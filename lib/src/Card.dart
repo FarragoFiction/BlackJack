@@ -41,12 +41,12 @@ class Card {
     }
 
     Future<Null> render(Element container, bool visible) async {
-        DivElement div = new DivElement();
+        SpanElement div = new SpanElement();
         div.classes.add("card");
-        String visibleString = "Hidden";
-        if(visible) visibleString = "Visible";
-        print("going to render $visibleString $name");
-        div.setInnerHtml("$visibleString $name");
+        //String visibleString = "Hidden";
+        //if(visible) visibleString = "Visible";
+        //print("going to render $visibleString $name");
+        //div.setInnerHtml("$visibleString $name");
         container.append(div);
 
         if(canvas != null && !dirty) {
@@ -69,7 +69,7 @@ class Card {
     Future<Null> renderFront(CanvasElement destinationCanvas) async {
         await Renderer.drawWhateverFuture(destinationCanvas, blankCardPath);
         CanvasElement symbol = await suit.getSymbol();
-        destinationCanvas.context2D.drawImage(symbol, width/2, height/2);
+        destinationCanvas.context2D.drawImage(symbol, width/4, height/4);
         destinationCanvas.context2D.fillStyle = suit.color.toStyleString();
         int fontSize = 42;
         destinationCanvas.context2D.font = "${fontSize}px Times New Roman";

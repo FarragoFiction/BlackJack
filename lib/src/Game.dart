@@ -40,6 +40,7 @@ class Game {
         resultsDiv.text = "YOU LOSE!!!";
         lost = true;
         container.append(resultsDiv);
+        flipCards();
         callBack();
     }
 
@@ -49,8 +50,14 @@ class Game {
             resultsDiv.text = "YOU WIN!!!";
             lost = false;
             container.append(resultsDiv);
+            flipCards();
             callBack();
         }
+    }
+
+    void flipCards() {
+        player.flipCards();
+        dealer.flipCards();
     }
 
     void checkResult() {
