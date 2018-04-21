@@ -71,7 +71,7 @@ class Card {
         CanvasElement symbol = await suit.getSymbol();
         destinationCanvas.context2D.drawImage(symbol, width/4, height/4);
         destinationCanvas.context2D.fillStyle = suit.color.toStyleString();
-        int fontSize = 42;
+        int fontSize = 52;
         destinationCanvas.context2D.font = "${fontSize}px Times New Roman";
         destinationCanvas.context2D.fillText(symbolValue, fontSize, fontSize);
     }
