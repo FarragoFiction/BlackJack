@@ -37,7 +37,7 @@ class Player {
     void render() {
         container.setInnerHtml("");
         container.setInnerHtml(name);
-        hand.render(container);
+        hand.render(container,true);
     }
 
 }

@@ -6,6 +6,10 @@ import "dart:html";
 
 class Game {
 
+    Element playerContainer;
+    Element dealerContainer;
+    Element infoContainer;
+
     Player player;
     Dealer dealer;
     List<Card> deck;
@@ -15,7 +19,8 @@ class Game {
     bool lost = false;
     bool dealerTookTurn = false;
     Action callBack;
-    Game(List<Card> this.deck, Element this.container, Element playerContainer, Element dealerContainer,Action this.callBack) {
+    Game(List<Card> this.deck, Element this.container,Action this.callBack) {
+        setUpPlayingField();
         player = new Player(deck, playerContainer);
         dealer = new Dealer(new Random().nextDouble(),deck, dealerContainer);
         renderHitButton();
@@ -70,6 +75,24 @@ class Game {
         }else if(player.hand.value > dealer.hand.value) {
             if(dealerTookTurn) youWin();
         }
+    }
+
+    void setUpPlayingField() {
+        TableElement table = new TableElement();
+        TableRowElement infoRow = new TableRowElement();
+        infoContainer = new TableCellElement();
+        infoRow.append(infoContainer);
+        table.append(infoRow);
+
+        TableRowElement trDealer = new TableRowElement();
+        table.append(trDealer);
+        TableRowElement trPlayer = new TableRowElement();
+        table.append(trPlayer);
+        playerContainer = new TableCellElement();
+        dealerContainer = new TableCellElement();
+        trDealer.append(dealerContainer);
+        trPlayer.append(playerContainer);
+        container.append(table);
     }
 
     void handleDealersTurn() {

@@ -35,20 +35,18 @@ class Hand {
     }
 
     void flipCards(Element container) {
-        visibleCards.add(invisibleCard);
-        invisibleCard.dirty = true; //rerender your self, flipped turnways
-        invisibleCard = null;
-        render(container);
+        render(container, true);
     }
 
-    void render(Element container) {
+    void render(Element container, [bool flipped = false]) {
         DivElement div = new DivElement();
         div.classes.add("hand");
         container.append(div);
-        div.setInnerHtml("Value: ${value}");
+        if(flipped)div.setInnerHtml("Value: ${value}");
         List<Card> cards = cardsInHand;
         for(Card c in cards) {
-            if(c == invisibleCard) {
+            if(flipped && c== invisibleCard) c.dirty = true;;
+            if(c == invisibleCard && !flipped) {
                 c.render(div, false);
             }else {
                 c.render(div, true);

@@ -23,7 +23,7 @@ class Dealer extends Player{
 
   void render() {
       container.setInnerHtml("");
-      container.setInnerHtml("Dealer");
+      container.setInnerHtml(name);
       hand.render(container);
   }
 

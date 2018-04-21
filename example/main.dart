@@ -4,9 +4,7 @@ import "dart:html";
 import "dart:async";
 Element container;
 Game game;
-Element playerContainer;
-Element dealerContainer;
-Element infoContainer;
+
 main() {
     start();
 }
@@ -16,10 +14,8 @@ Future<Null> start() async{
     container = querySelector("#output");
     List<Card> cards = Card.getFreshDeck();
     cards = Card.shuffleDeck(cards);
-    setUpPlayingField();
 
-    game = new Game(cards, infoContainer, playerContainer, dealerContainer, finishGame);
-
+    game = new Game(cards,container, finishGame);
     //testThingy();
     displayStartGame();
 }
@@ -28,21 +24,7 @@ void finishGame() {
     window.alert("game is over");
 }
 
-void setUpPlayingField() {
-    TableElement table = new TableElement();
-    TableRowElement tr2 = new TableRowElement();
-    infoContainer = new TableCellElement();
-    tr2.append(infoContainer);
-    table.append(tr2);
 
-    TableRowElement tr = new TableRowElement();
-    table.append(tr);
-    playerContainer = new TableCellElement();
-    dealerContainer = new TableCellElement();
-    tr.append(dealerContainer);
-    tr.append(playerContainer);
-    container.append(table);
-}
 
 void displayStartGame() {
     game.player.render();
