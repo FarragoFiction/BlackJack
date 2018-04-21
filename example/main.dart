@@ -5,16 +5,31 @@ import "dart:async";
 Element container;
 Game game;
 
+DivElement div;
 main() {
+    div = querySelector("#output");
     start();
+}
+
+void clearDiv() {
+    List<Element> children = new List.from(div.children);
+    children.forEach((f) {
+        f.remove();
+    });
 }
 
 Future<Null> start() async{
     await Loader.preloadManifest();
-    game = new Game(Card.getFreshDeck(),querySelector("#output"), finishGame);
+    clearDiv();
+    game = new Game(Card.getFreshDeck(),div, finishGame);
     game.start();
 }
 
 void finishGame() {
-    window.alert("TODO: process bets");
+    ButtonElement restartButton = new ButtonElement();
+    restartButton.text = "New Deal?";
+    div.append(restartButton);
+    restartButton.onClick.listen((e) {
+        start();
+    });
 }

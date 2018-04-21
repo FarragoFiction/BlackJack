@@ -8,7 +8,11 @@ class Game {
 
     Element playerContainer;
     Element dealerContainer;
+    Element quipContainer;
     Element infoContainer;
+
+    List<String> dealerWonQuips = <String>["Obviously a superior robot would win."];
+    List<String> dealerLostQuips = <String>["Huh. How'd that happen?"];
 
     Player player;
     Dealer dealer;
@@ -16,6 +20,7 @@ class Game {
     Element container;
     ButtonElement hitButton;
     ButtonElement stayButton;
+    //from player's persepctive
     bool lost = false;
     bool dealerTookTurn = false;
     Action callBack;
@@ -23,7 +28,7 @@ class Game {
         deck.shuffle(new Random());
         setUpPlayingField();
         player = new Player(deck, playerContainer);
-        dealer = new Dealer(new Random().nextDouble(),deck, dealerContainer);
+        dealer = new Dealer(deck, dealerContainer);
         renderHitButton();
         renderStayButton();
     }
@@ -52,6 +57,7 @@ class Game {
         lost = true;
         container.append(resultsDiv);
         flipCards();
+        quip();
         callBack();
     }
 
@@ -62,8 +68,24 @@ class Game {
             lost = false;
             container.append(resultsDiv);
             flipCards();
+            quip();
             callBack();
         }
+    }
+
+    void quip() {
+        DivElement quipElement = new DivElement();
+        String quipText = "";
+        Random rand = new Random();
+        if(lost) { //if player lost, i won
+            quipText = rand.pickFrom(dealerWonQuips);
+        }else {
+            quipText = rand.pickFrom(dealerLostQuips);
+        }
+
+        quipElement.setInnerHtml("$quipText");
+        quipContainer.append(quipElement);
+
     }
 
     void flipCards() {
@@ -96,6 +118,8 @@ class Game {
         table.append(trPlayer);
         playerContainer = new TableCellElement();
         dealerContainer = new TableCellElement();
+        quipContainer = new TableCellElement();
+        infoRow.append(quipContainer);
         trDealer.append(dealerContainer);
         trPlayer.append(playerContainer);
         container.append(table);
