@@ -6,6 +6,10 @@ import 'package:RenderingLib/RendereringLib.dart';
 class Dealer extends Player{
     //at 100% patience they ALWAYS hit under 17 and stay at 17+
     //otherwise have a chance of staying at 16 and hitting at 18.
+
+    @override
+    String name = "Dealer"; //in wiggler sim will be empresses name?
+
     double patience;
     Random rand = new Random();
     int low = 16;

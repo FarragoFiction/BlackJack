@@ -7,6 +7,7 @@ class Player {
 
     bool donePlaying = false;
     Element container;
+    String name = "Player";
 
     Player(List<Card> deck, Element this.container) {
         hand = new Hand(deck);
@@ -28,12 +29,14 @@ class Player {
     }
 
     void flipCards() {
+        container.setInnerHtml("");
+        container.setInnerHtml(name);
         hand.flipCards(container);
     }
 
     void render() {
         container.setInnerHtml("");
-        container.setInnerHtml("Player");
+        container.setInnerHtml(name);
         hand.render(container);
     }
 

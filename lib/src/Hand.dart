@@ -12,7 +12,8 @@ class Hand {
 
     List<Card> get cardsInHand {
         List<Card> tmp = new List<Card>.from(visibleCards);
-        tmp.add(invisibleCard);
+        //it'll be null if i've flipped it over
+        if(invisibleCard != null) tmp.add(invisibleCard);
         return tmp;
     }
 
@@ -35,6 +36,7 @@ class Hand {
 
     void flipCards(Element container) {
         visibleCards.add(invisibleCard);
+        invisibleCard.dirty = true; //rerender your self, flipped turnways
         invisibleCard = null;
         render(container);
     }
