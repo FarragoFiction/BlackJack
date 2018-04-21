@@ -3,10 +3,10 @@ import "dart:html";
 import "dart:async";
 
 class Card {
-    static String HEART = "Hearts";
-    static String DIAMONDS = "Diamonds";
-    static String CLUBS = "Clubs";
-    static String SPADES = "Spades";
+    static Suit HEART = new Suit("Hearts", new Colour(255,0,0));
+    static Suit DIAMONDS = new Suit("Diamonds", new Colour(255,0,0));
+    static Suit CLUBS =  new Suit("Clubs", new Colour(0,0,0));
+    static Suit SPADES =  new Suit("Spades", new Colour(0,0,0));
 
     int width = 322;
     int height = 450;
@@ -21,7 +21,7 @@ class Card {
     String blankCard = "Base.png";
     String flippedCard = "Back.png";
     int value;
-    String suit;
+    Suit suit;
 
     String get blankCardPath => "${folder}${blankCard}";
     String get backCardPath => "${folder}${flippedCard}";
@@ -31,7 +31,7 @@ class Card {
 
 
     //cards are actually p big
-    Card(int this.value, String this.suit, {double this.scale:0.33});
+    Card(int this.value, Suit this.suit, {double this.scale:0.33});
 
     int currentValue(int otherValue) {
         //aces do their own thing
@@ -41,6 +41,7 @@ class Card {
 
     Future<Null> render(Element container, bool visible) async {
         DivElement div = new DivElement();
+        div.classes.add("card");
         String visibleString = "Hidden";
         if(visible) visibleString = "Visible";
         print("going to render $visibleString $name");
@@ -55,7 +56,7 @@ class Card {
             canvas = new CanvasElement(width: scaledWidth, height: scaledHeight);
             div.append(canvas);
             if (visible) {
-                await Renderer.drawWhateverFuture(fullCanvas, blankCardPath);
+                await renderFront(fullCanvas);
             } else {
                 await Renderer.drawWhateverFuture(fullCanvas, backCardPath);
             }
@@ -63,7 +64,16 @@ class Card {
         }
     }
 
-    static Card drawCard(List<Card> cards) {
+
+    Future<Null> renderFront(CanvasElement destinationCanvas) async {
+        await Renderer.drawWhateverFuture(destinationCanvas, blankCardPath);
+        //TODO render symbol
+        //TODO in text, draw value (number of JKQ)
+
+    }
+
+
+        static Card drawCard(List<Card> cards) {
         if(cards.isEmpty) {
             window.alert("shuffling new deck");
             cards.clear();
@@ -94,11 +104,15 @@ class Card {
         return ret;
     }
 
+    String get symbolValue {
+        if(value == 11) return "J";
+        if(value == 12) return "Q";
+        if(value == 13) return "K";
+        return "$value";
+    }
+
     String get name {
-        if(value == 11) return "Jack of $suit";
-        if(value == 12) return "Queen of $suit";
-        if(value == 13) return "King of $suit";
-        return "$value of $suit";
+        return "$symbolValue of $suit";
     }
 
     static List<Card> shuffleDeck(List<Card> cards) {
@@ -140,7 +154,7 @@ class AceCard extends Card {
     int altValue = 11;
     int value = 1;
 
-  AceCard(String suit) : super(1, suit);
+  AceCard(Suit suit) : super(1, suit);
 
     @override
     String get name {
@@ -153,5 +167,16 @@ class AceCard extends Card {
             return value;
         }
         return altValue;
+    }
+}
+
+class Suit {
+    String name;
+    Colour color;
+    Suit(String this.name, Colour this.color);
+
+    @override
+    String toString() {
+        return this.name;
     }
 }

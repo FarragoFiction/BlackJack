@@ -35,6 +35,7 @@ class Hand {
 
     void render(Element container) {
         DivElement div = new DivElement();
+        div.classes.add("hand");
         container.append(div);
         div.setInnerHtml("Value: ${value}");
         List<Card> cards = cardsInHand;
