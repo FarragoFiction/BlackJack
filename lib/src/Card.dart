@@ -3,6 +3,8 @@ import "dart:html";
 import "dart:async";
 
 class Card {
+    static String folder = "images/Cards/";
+
     static Suit HEART = new Suit("Hearts", new Colour(255,0,0));
     static Suit DIAMONDS = new Suit("Diamonds", new Colour(255,0,0));
     static Suit CLUBS =  new Suit("Clubs", new Colour(0,0,0));
@@ -17,7 +19,6 @@ class Card {
     CanvasElement canvas;
 
 
-    String folder = "images/Cards/";
     String blankCard = "Base.png";
     String flippedCard = "Back.png";
     int value;
@@ -67,9 +68,12 @@ class Card {
 
     Future<Null> renderFront(CanvasElement destinationCanvas) async {
         await Renderer.drawWhateverFuture(destinationCanvas, blankCardPath);
-        //TODO render symbol
-        //TODO in text, draw value (number of JKQ)
-
+        CanvasElement symbol = await suit.getSymbol();
+        destinationCanvas.context2D.drawImage(symbol, width/2, height/2);
+        destinationCanvas.context2D.fillStyle = suit.color.toStyleString();
+        int fontSize = 42;
+        destinationCanvas.context2D.font = "${fontSize}px Times New Roman";
+        destinationCanvas.context2D.fillText(symbolValue, fontSize, fontSize);
     }
 
 
@@ -173,10 +177,25 @@ class AceCard extends Card {
 class Suit {
     String name;
     Colour color;
-    Suit(String this.name, Colour this.color);
+    int width = 180;
+    int height = 215;
+    //only need to fetch once
+    CanvasElement cachedCanvas;
+    Suit(String this.name,Colour this.color);
 
     @override
     String toString() {
         return this.name;
+    }
+
+    String get symbolPath => "${Card.folder}${name}.png";
+
+
+    Future<CanvasElement> getSymbol() async {
+        if(cachedCanvas == null) {
+            cachedCanvas = new CanvasElement(width: width, height: height);
+            await Renderer.drawWhateverFuture(cachedCanvas, symbolPath);
+        }
+        return cachedCanvas;
     }
 }

@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8f383894-d1c7-4e2c-85d8-bb0ad6634aeb" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BlackJack.iml" afterPath="$PROJECT_DIR$/BlackJack.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/index.html" afterPath="$PROJECT_DIR$/example/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/images/Cards/Clubs.png" afterPath="$PROJECT_DIR$/example/images/Cards/Clubs.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/images/Cards/Diamonds.png" afterPath="$PROJECT_DIR$/example/images/Cards/Diamonds.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/images/Cards/Hearts.png" afterPath="$PROJECT_DIR$/example/images/Cards/Hearts.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/src/Card.dart" afterPath="$PROJECT_DIR$/lib/src/Card.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/src/Hand.dart" afterPath="$PROJECT_DIR$/lib/src/Hand.dart" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -48,8 +46,8 @@
       <file leaf-file-name="Card.dart" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/src/Card.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="179" column="25" lean-forward="false" selection-start-line="179" selection-start-column="25" selection-end-line="179" selection-end-column="25" />
+            <state relative-caret-position="225">
+              <caret line="74" column="75" lean-forward="false" selection-start-line="74" selection-start-column="75" selection-end-line="74" selection-end-column="75" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
               </folding>
@@ -790,8 +788,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/src/Card.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="179" column="25" lean-forward="false" selection-start-line="179" selection-start-column="25" selection-end-line="179" selection-end-column="25" />
+        <state relative-caret-position="225">
+          <caret line="74" column="75" lean-forward="false" selection-start-line="74" selection-start-column="75" selection-end-line="74" selection-end-column="75" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
           </folding>
