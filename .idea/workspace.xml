@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8f383894-d1c7-4e2c-85d8-bb0ad6634aeb" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/images/Cards/ClubsKing.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/images/Cards/HeartsKing.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/example/images/Cards/SpadesKing.png" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/images/Cards/Jack.png" afterPath="$PROJECT_DIR$/example/images/Cards/Jack.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/images/Cards/King.png" afterPath="$PROJECT_DIR$/example/images/Cards/King.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/images/Cards/Queen.png" afterPath="$PROJECT_DIR$/example/images/Cards/Queen.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/src/Card.dart" afterPath="$PROJECT_DIR$/lib/src/Card.dart" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -33,8 +33,8 @@
       <file leaf-file-name="Card.dart" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/src/Card.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="146">
-              <caret line="121" column="21" lean-forward="true" selection-start-line="121" selection-start-column="21" selection-end-line="121" selection-end-column="21" />
+            <state relative-caret-position="2295">
+              <caret line="153" column="71" lean-forward="true" selection-start-line="153" selection-start-column="71" selection-end-line="153" selection-end-column="71" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
               </folding>
@@ -141,6 +141,7 @@
       <find>setup</find>
       <find>dealer =</find>
       <find>translate</find>
+      <find>.png</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -172,7 +173,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="39" />
+    <option name="x" value="42" />
     <option name="y" value="22" />
     <option name="width" value="1259" />
     <option name="height" value="673" />
@@ -542,7 +543,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="39" y="22" width="1259" height="673" extended-state="0" />
+    <frame x="42" y="22" width="1259" height="673" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -871,8 +872,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/src/Card.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="121" column="21" lean-forward="true" selection-start-line="121" selection-start-column="21" selection-end-line="121" selection-end-column="21" />
+        <state relative-caret-position="2295">
+          <caret line="153" column="71" lean-forward="true" selection-start-line="153" selection-start-column="71" selection-end-line="153" selection-end-column="71" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
           </folding>

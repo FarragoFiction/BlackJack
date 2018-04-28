@@ -30,6 +30,10 @@ class Card {
     Suit suit;
 
     String get blankCardPath => "${folder}${blankCard}";
+    String get kingPath => "${folder}King.png";
+    String get queenPath => "${folder}Queen.png";
+    String get jackPath => "${folder}Jack.png";
+
     String get backCardPath => "${folder}${flippedCard}";
     int get scaledWidth => (width*scale).round();
     int get scaledHeight => (height*scale).round();
@@ -99,7 +103,6 @@ class Card {
     }
 
     Future<Null> renderSymbols(CanvasElement destinationCanvas) async {
-        print("rendering symbols for $value");
         if(value == 2) {
             await renderTwoFront(destinationCanvas);
         }else if(value == 3) {
@@ -139,17 +142,16 @@ class Card {
     }
 
     Future<Null> renderQueenFront(CanvasElement destinationCanvas) async {
-        Renderer.drawWhateverFuture(destinationCanvas, "images/Cards/Queen.png");
+        await Renderer.drawWhateverFuture(destinationCanvas, queenPath);
     }
 
     Future<Null> renderKingFront(CanvasElement destinationCanvas) async {
-        Renderer.drawWhateverFuture(destinationCanvas, "images/Cards/King.png");
+        await Renderer.drawWhateverFuture(destinationCanvas, kingPath);
 
     }
 
     Future<Null> renderJackFront(CanvasElement destinationCanvas) async {
-        Renderer.drawWhateverFuture(destinationCanvas, "images/Cards/Jack.png");
-
+        await Renderer.drawWhateverFuture(destinationCanvas, jackPath);
     }
 
     Future<Null> renderTwoFront(CanvasElement destinationCanvas) async {
