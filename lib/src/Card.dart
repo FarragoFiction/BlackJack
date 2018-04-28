@@ -117,13 +117,13 @@ class Card {
         }else if(value == 9) {
             await renderNineFront(destinationCanvas);
         }else if(value == 10) {
-            await renderNineFront(destinationCanvas);
+            await renderTenFront(destinationCanvas);
         }else if(value == 11) {
-            await renderNineFront(destinationCanvas);
+            await renderTenFront(destinationCanvas);
         }else if(value == 12) {
-            await renderNineFront(destinationCanvas);
+            await renderTenFront(destinationCanvas);
         }else if(value == 13) {
-            await renderNineFront(destinationCanvas);
+            await renderTenFront(destinationCanvas);
         }else {
             await renderAceFront(destinationCanvas);
         }
@@ -225,13 +225,25 @@ class Card {
         destinationCanvas.context2D.drawImageScaled(symbol, 200, 80, symbol.width/symbolDivider, symbol.height/symbolDivider);
         destinationCanvas.context2D.drawImageScaled(symbol, 200, 160, symbol.width/symbolDivider, symbol.height/symbolDivider);
         Renderer.drawUpsideDownAt(symbol, destinationCanvas, 200 + (symbol.width/3).round(), 310, symbolDivider);
-        Renderer.drawUpsideDownAt(symbol, destinationCanvas, 200 + (symbol.width/3).round(), 380, symbolDivider);    }
+        Renderer.drawUpsideDownAt(symbol, destinationCanvas, 200 + (symbol.width/3).round(), 380, symbolDivider);
+    }
 
     Future<Null> renderTenFront(CanvasElement destinationCanvas) async {
         CanvasElement symbol = await suit.getSymbol();
-        destinationCanvas.context2D.drawImageScaled(symbol, 10, 0, symbol.width/symbolDivider, symbol.height/symbolDivider);
-        destinationCanvas.context2D.drawImageScaled(symbol, 20, 0, symbol.width/symbolDivider, symbol.height/symbolDivider);
-    }
+        destinationCanvas.context2D.drawImageScaled(symbol, 50, 80, symbol.width/symbolDivider, symbol.height/symbolDivider);
+        destinationCanvas.context2D.drawImageScaled(symbol, 50, 160, symbol.width/symbolDivider, symbol.height/symbolDivider);
+        Renderer.drawUpsideDownAt(symbol, destinationCanvas, 50 + (symbol.width/3).round(), 310, symbolDivider);
+        Renderer.drawUpsideDownAt(symbol, destinationCanvas, 50 + (symbol.width/3).round(), 380, symbolDivider);
+
+        destinationCanvas.context2D.drawImageScaled(symbol, 130, 120, symbol.width/symbolDivider, symbol.height/symbolDivider);
+        Renderer.drawUpsideDownAt(symbol, destinationCanvas, 130 + (symbol.width/3).round(), 330, symbolDivider);
+
+
+        destinationCanvas.context2D.drawImageScaled(symbol, 200, 80, symbol.width/symbolDivider, symbol.height/symbolDivider);
+        destinationCanvas.context2D.drawImageScaled(symbol, 200, 160, symbol.width/symbolDivider, symbol.height/symbolDivider);
+        Renderer.drawUpsideDownAt(symbol, destinationCanvas, 200 + (symbol.width/3).round(), 310, symbolDivider);
+        Renderer.drawUpsideDownAt(symbol, destinationCanvas, 200 + (symbol.width/3).round(), 380, symbolDivider);
+}
 
         static Card drawCard(List<Card> cards) {
         if(cards.isEmpty) {
