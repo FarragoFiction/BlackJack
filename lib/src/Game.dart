@@ -106,7 +106,15 @@ class Game {
     }
 
     void setUpPlayingField() {
+        DivElement borderElement = new DivElement();
+        borderElement.style.display = "inline-block";
+        borderElement.style.border = "3px solid #154418";
+
         TableElement table = new TableElement();
+        table.style.backgroundColor = "#298b30";
+        table.style.border = "3px solid #ffffff";
+        table.style.padding = "10px";
+        table.style.minWidth = "600px";
         TableRowElement infoRow = new TableRowElement();
         infoContainer = new TableCellElement();
         infoRow.append(infoContainer);
@@ -122,7 +130,8 @@ class Game {
         infoRow.append(quipContainer);
         trDealer.append(dealerContainer);
         trPlayer.append(playerContainer);
-        container.append(table);
+        borderElement.append(table);
+        container.append(borderElement);
     }
 
     void handleDealersTurn() {
