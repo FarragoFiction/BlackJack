@@ -10,6 +10,7 @@ class Game {
     Element dealerContainer;
     Element quipContainer;
     Element infoContainer;
+    Element buttonContainer;
 
     List<String> dealerWonQuips = <String>["Obviously a superior robot would win."];
     List<String> dealerLostQuips = <String>["Huh. How'd that happen?"];
@@ -29,6 +30,8 @@ class Game {
         setUpPlayingField();
         player = new Player(deck, playerContainer);
         dealer = new Dealer(deck, dealerContainer);
+        buttonContainer = new DivElement();
+        container.append(buttonContainer);
         renderHitButton();
         renderStayButton();
     }
@@ -114,7 +117,7 @@ class Game {
         table.style.backgroundColor = "#298b30";
         table.style.border = "3px solid #ffffff";
         table.style.padding = "10px";
-        table.style.minWidth = "600px";
+        table.style.minWidth = "800px";
         TableRowElement infoRow = new TableRowElement();
         infoContainer = new TableCellElement();
         infoRow.append(infoContainer);
@@ -127,6 +130,7 @@ class Game {
         playerContainer = new TableCellElement();
         dealerContainer = new TableCellElement();
         quipContainer = new TableCellElement();
+        quipContainer.setInnerHtml("...");
         infoRow.append(quipContainer);
         trDealer.append(dealerContainer);
         trPlayer.append(playerContainer);
@@ -141,7 +145,7 @@ class Game {
 
     void renderStayButton() {
         stayButton = new ButtonElement();
-        container.append(stayButton);
+        buttonContainer.append(stayButton);
         stayButton.text = "I'll Stay";
         stayButton.onClick.listen((e) {
             player.stay();
@@ -151,7 +155,7 @@ class Game {
 
     void renderHitButton() {
         hitButton = new ButtonElement();
-        container.append(hitButton);
+        buttonContainer.append(hitButton);
         hitButton.text = "Hit Me";
         hitButton.onClick.listen((e) {
             player.hit();
