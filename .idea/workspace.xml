@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8f383894-d1c7-4e2c-85d8-bb0ad6634aeb" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BlackJack.iml" afterPath="$PROJECT_DIR$/BlackJack.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/index.html" afterPath="$PROJECT_DIR$/example/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/src/Card.dart" afterPath="$PROJECT_DIR$/lib/src/Card.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/src/Dealer.dart" afterPath="$PROJECT_DIR$/lib/src/Dealer.dart" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,8 +30,8 @@
       <file leaf-file-name="Card.dart" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/src/Card.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="215">
-              <caret line="126" column="149" lean-forward="false" selection-start-line="126" selection-start-column="149" selection-end-line="126" selection-end-column="149" />
+            <state relative-caret-position="124">
+              <caret line="139" column="82" lean-forward="false" selection-start-line="139" selection-start-column="82" selection-end-line="139" selection-end-column="82" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
               </folding>
@@ -872,8 +868,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/src/Card.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="126" column="149" lean-forward="false" selection-start-line="126" selection-start-column="149" selection-end-line="126" selection-end-column="149" />
+        <state relative-caret-position="124">
+          <caret line="139" column="82" lean-forward="false" selection-start-line="139" selection-start-column="82" selection-end-line="139" selection-end-column="82" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
           </folding>

@@ -135,9 +135,9 @@ class Card {
 
     Future<Null> renderTwoFront(CanvasElement destinationCanvas) async {
         CanvasElement symbol = await suit.getSymbol();
-        destinationCanvas.context2D.drawImageScaled(symbol, 100, 100, symbol.width/symbolDivider, symbol.height/symbolDivider);
+        destinationCanvas.context2D.drawImageScaled(symbol, 130, 100, symbol.width/symbolDivider, symbol.height/symbolDivider);
         //todo this needs to be upside down
-        destinationCanvas.context2D.drawImageScaled(symbol, 100, 200, symbol.width/symbolDivider, symbol.height/symbolDivider);
+        Renderer.drawUpsideDownAt(symbol, destinationCanvas, 130 + (symbol.width/3).round(), 300, symbolDivider);
 
     }
 
