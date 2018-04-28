@@ -113,11 +113,11 @@ class Card {
         }else if(value == 7) {
             await renderSevenFront(destinationCanvas);
         }else if(value == 8) {
-            await renderSevenFront(destinationCanvas);
+            await renderEightFront(destinationCanvas);
         }else if(value == 9) {
-            await renderSevenFront(destinationCanvas);
+            await renderEightFront(destinationCanvas);
         }else if(value == 10) {
-            await renderSevenFront(destinationCanvas);
+            await renderEightFront(destinationCanvas);
         }else {
             await renderAceFront(destinationCanvas);
         }
@@ -194,8 +194,16 @@ class Card {
 
     Future<Null> renderEightFront(CanvasElement destinationCanvas) async {
         CanvasElement symbol = await suit.getSymbol();
-        destinationCanvas.context2D.drawImageScaled(symbol, 10, 0, symbol.width/symbolDivider, symbol.height/symbolDivider);
-        destinationCanvas.context2D.drawImageScaled(symbol, 20, 0, symbol.width/symbolDivider, symbol.height/symbolDivider);
+        destinationCanvas.context2D.drawImageScaled(symbol, 50, 100, symbol.width/symbolDivider, symbol.height/symbolDivider);
+        destinationCanvas.context2D.drawImageScaled(symbol, 50, 190, symbol.width/symbolDivider, symbol.height/symbolDivider);
+        destinationCanvas.context2D.drawImageScaled(symbol, 130, 150, symbol.width/symbolDivider, symbol.height/symbolDivider);
+
+        Renderer.drawUpsideDownAt(symbol, destinationCanvas, 50 + (symbol.width/3).round(), 350, symbolDivider);
+        Renderer.drawUpsideDownAt(symbol, destinationCanvas, 130 + (symbol.width/3).round(), 300, symbolDivider);
+
+        destinationCanvas.context2D.drawImageScaled(symbol, 200, 100, symbol.width/symbolDivider, symbol.height/symbolDivider);
+        destinationCanvas.context2D.drawImageScaled(symbol, 200, 190, symbol.width/symbolDivider, symbol.height/symbolDivider);
+        Renderer.drawUpsideDownAt(symbol, destinationCanvas, 200 + (symbol.width/3).round(), 350, symbolDivider);
     }
 
     Future<Null> renderNineFront(CanvasElement destinationCanvas) async {
