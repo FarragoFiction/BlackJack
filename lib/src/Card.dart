@@ -119,11 +119,11 @@ class Card {
         }else if(value == 10) {
             await renderTenFront(destinationCanvas);
         }else if(value == 11) {
-            await renderTenFront(destinationCanvas);
+            await renderJackFront(destinationCanvas);
         }else if(value == 12) {
-            await renderTenFront(destinationCanvas);
+            await renderQueenFront(destinationCanvas);
         }else if(value == 13) {
-            await renderTenFront(destinationCanvas);
+            await renderKingFront(destinationCanvas);
         }else {
             await renderAceFront(destinationCanvas);
         }
@@ -136,6 +136,20 @@ class Card {
         CanvasElement symbol = await suit.getSymbol();
         destinationCanvas.context2D.drawImage(symbol, width/4, height/4);
         print("drew ace symbol");
+    }
+
+    Future<Null> renderQueenFront(CanvasElement destinationCanvas) async {
+        Renderer.drawWhateverFuture(destinationCanvas, "images/Cards/Queen.png");
+    }
+
+    Future<Null> renderKingFront(CanvasElement destinationCanvas) async {
+        Renderer.drawWhateverFuture(destinationCanvas, "images/Cards/King.png");
+
+    }
+
+    Future<Null> renderJackFront(CanvasElement destinationCanvas) async {
+        Renderer.drawWhateverFuture(destinationCanvas, "images/Cards/Jack.png");
+
     }
 
     Future<Null> renderTwoFront(CanvasElement destinationCanvas) async {
