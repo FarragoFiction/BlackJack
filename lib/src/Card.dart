@@ -1,9 +1,14 @@
 import 'package:RenderingLib/RendereringLib.dart';
 import "dart:html";
 import "dart:async";
+import "dart:math" as Math;
 
 class Card {
     static String folder = "images/Cards/";
+    int fontSize = 52;
+    //how much smaller than ace
+    int symbolDivider = 3;
+
 
     static Suit HEART = new Suit("Hearts", new Colour(255,0,0));
     static Suit DIAMONDS = new Suit("Diamonds", new Colour(255,0,0));
@@ -68,14 +73,123 @@ class Card {
 
     Future<Null> renderFront(CanvasElement destinationCanvas) async {
         await Renderer.drawWhateverFuture(destinationCanvas, blankCardPath);
-        CanvasElement symbol = await suit.getSymbol();
-        destinationCanvas.context2D.drawImage(symbol, width/4, height/4);
-        destinationCanvas.context2D.fillStyle = suit.color.toStyleString();
-        int fontSize = 52;
-        destinationCanvas.context2D.font = "${fontSize}px Times New Roman";
-        destinationCanvas.context2D.fillText(symbolValue, fontSize, fontSize);
+        await renderNumbers(destinationCanvas);
+        await renderSymbols(destinationCanvas);
     }
 
+    Future<Null> renderNumbers(CanvasElement destinationCanvas) async {
+        print("rendering numbers");
+        destinationCanvas.context2D.fillStyle = suit.color.toStyleString();
+        destinationCanvas.context2D.font = "${fontSize}px Times New Roman";
+        destinationCanvas.context2D.fillText(symbolValue, fontSize/2, fontSize);
+
+        destinationCanvas.context2D.save();
+        //translate canvas such that where you want to draw the number is the origin
+        //that way it rotates correctly
+        destinationCanvas.context2D.translate(destinationCanvas.width- fontSize/2, destinationCanvas.height - fontSize);
+        destinationCanvas.context2D.rotate(180*Math.PI/180);
+        destinationCanvas.context2D.fillText(symbolValue,0, 0);
+        destinationCanvas.context2D.restore();
+    }
+
+    Future<Null> renderSymbols(CanvasElement destinationCanvas) async {
+        print("rendering symbols for $value");
+        if(value == 2) {
+            await renderTwoFront(destinationCanvas);
+        }else if(value == 3) {
+            await renderTwoFront(destinationCanvas);
+        }else if(value == 4) {
+            await renderTwoFront(destinationCanvas);
+        }else if(value == 5) {
+            await renderTwoFront(destinationCanvas);
+        }else if(value == 6) {
+            await renderTwoFront(destinationCanvas);
+        }else if(value == 7) {
+            await renderTwoFront(destinationCanvas);
+        }else if(value == 8) {
+            await renderTwoFront(destinationCanvas);
+        }else if(value == 9) {
+            await renderTwoFront(destinationCanvas);
+        }else if(value == 10) {
+            await renderTwoFront(destinationCanvas);
+        }else {
+            await renderAceFront(destinationCanvas);
+        }
+
+        await renderNumberSymbol(destinationCanvas);
+
+    }
+
+    Future<Null> renderNumberSymbol(CanvasElement destinationCanvas) async {
+        CanvasElement symbol = await suit.getSymbol();
+        //just underneath number
+        destinationCanvas.context2D.drawImageScaled(symbol, fontSize/2, fontSize, symbol.width/6, symbol.height/6);
+        Renderer.drawUpsideDownAt(symbol, destinationCanvas, destinationCanvas.width - (fontSize/2).round(), destinationCanvas.height - fontSize, 6);
+    }
+
+    Future<Null> renderAceFront(CanvasElement destinationCanvas) async {
+        CanvasElement symbol = await suit.getSymbol();
+        destinationCanvas.context2D.drawImage(symbol, width/4, height/4);
+        print("drew ace symbol");
+    }
+
+    Future<Null> renderTwoFront(CanvasElement destinationCanvas) async {
+        CanvasElement symbol = await suit.getSymbol();
+        destinationCanvas.context2D.drawImageScaled(symbol, 100, 100, symbol.width/symbolDivider, symbol.height/symbolDivider);
+        //todo this needs to be upside down
+        destinationCanvas.context2D.drawImageScaled(symbol, 100, 200, symbol.width/symbolDivider, symbol.height/symbolDivider);
+
+    }
+
+    Future<Null> renderThreeFront(CanvasElement destinationCanvas) async {
+        CanvasElement symbol = await suit.getSymbol();
+        destinationCanvas.context2D.drawImageScaled(symbol, 10, 0, symbol.width/symbolDivider, symbol.height/symbolDivider);
+        destinationCanvas.context2D.drawImageScaled(symbol, 20, 0, symbol.width/symbolDivider, symbol.height/symbolDivider);
+
+    }
+
+    Future<Null> renderFourFront(CanvasElement destinationCanvas) async {
+        CanvasElement symbol = await suit.getSymbol();
+        destinationCanvas.context2D.drawImageScaled(symbol, 10, 0, symbol.width/symbolDivider, symbol.height/symbolDivider);
+        destinationCanvas.context2D.drawImageScaled(symbol, 20, 0, symbol.width/symbolDivider, symbol.height/symbolDivider);
+
+    }
+
+    Future<Null> renderFiveFront(CanvasElement destinationCanvas) async {
+        CanvasElement symbol = await suit.getSymbol();
+        destinationCanvas.context2D.drawImageScaled(symbol, 10, 0, symbol.width/4, symbol.height/4);
+        destinationCanvas.context2D.drawImageScaled(symbol, 20, 0, symbol.width/4, symbol.height/4);
+    }
+
+    Future<Null> renderSixFront(CanvasElement destinationCanvas) async {
+        CanvasElement symbol = await suit.getSymbol();
+        destinationCanvas.context2D.drawImageScaled(symbol, 10, 0, symbol.width/symbolDivider, symbol.height/symbolDivider);
+        destinationCanvas.context2D.drawImageScaled(symbol, 20, 0, symbol.width/symbolDivider, symbol.height/symbolDivider);
+    }
+
+    Future<Null> renderSevenFront(CanvasElement destinationCanvas) async {
+        CanvasElement symbol = await suit.getSymbol();
+        destinationCanvas.context2D.drawImageScaled(symbol, 10, 0, symbol.width/symbolDivider, symbol.height/symbolDivider);
+        destinationCanvas.context2D.drawImageScaled(symbol, 20, 0, symbol.width/symbolDivider, symbol.height/symbolDivider);
+    }
+
+    Future<Null> renderEightFront(CanvasElement destinationCanvas) async {
+        CanvasElement symbol = await suit.getSymbol();
+        destinationCanvas.context2D.drawImageScaled(symbol, 10, 0, symbol.width/symbolDivider, symbol.height/symbolDivider);
+        destinationCanvas.context2D.drawImageScaled(symbol, 20, 0, symbol.width/symbolDivider, symbol.height/symbolDivider);
+    }
+
+    Future<Null> renderNineFront(CanvasElement destinationCanvas) async {
+        CanvasElement symbol = await suit.getSymbol();
+        destinationCanvas.context2D.drawImageScaled(symbol, 10, 0, symbol.width/symbolDivider, symbol.height/symbolDivider);
+        destinationCanvas.context2D.drawImageScaled(symbol, 20, 0, symbol.width/symbolDivider, symbol.height/symbolDivider);
+    }
+
+    Future<Null> renderTenFront(CanvasElement destinationCanvas) async {
+        CanvasElement symbol = await suit.getSymbol();
+        destinationCanvas.context2D.drawImageScaled(symbol, 10, 0, symbol.width/symbolDivider, symbol.height/symbolDivider);
+        destinationCanvas.context2D.drawImageScaled(symbol, 20, 0, symbol.width/symbolDivider, symbol.height/symbolDivider);
+    }
 
         static Card drawCard(List<Card> cards) {
         if(cards.isEmpty) {
@@ -194,8 +308,13 @@ class Suit {
 
     Future<CanvasElement> getSymbol() async {
         if(cachedCanvas == null) {
-            cachedCanvas = new CanvasElement(width: width, height: height);
-            await Renderer.drawWhateverFuture(cachedCanvas, symbolPath);
+           // print("rendering $name for first time");
+            CanvasElement tmpcachedCanvas = new CanvasElement(width: width, height: height);
+            await Renderer.drawWhateverFuture(tmpcachedCanvas, symbolPath);
+            //don't do this sooner or if subsequent uses of this symbol will be blank  until the await is done
+            cachedCanvas = tmpcachedCanvas;
+        }else {
+            //print("using cached canvas");
         }
         return cachedCanvas;
     }

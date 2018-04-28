@@ -11,7 +11,7 @@ class Dealer extends Player{
     String name = "Dealer"; //in wiggler sim will be empresses name?
 
     Random rand = new Random();
-    int normal = 17; //best place to stop at.
+    int normal = 16; //17 is best place to stop at.
 
     //things that use this can replace.
     List<String> winQuips = <String>["I'm feeling really lucky."];
