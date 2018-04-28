@@ -90,6 +90,12 @@ class Card {
         destinationCanvas.context2D.rotate(180*Math.PI/180);
         destinationCanvas.context2D.fillText(symbolValue,0, 0);
         destinationCanvas.context2D.restore();
+
+        CanvasElement symbol = await suit.getSymbol();
+        //just underneath number
+        destinationCanvas.context2D.drawImageScaled(symbol, fontSize/2, fontSize, symbol.width/6, symbol.height/6);
+        Renderer.drawUpsideDownAt(symbol, destinationCanvas, destinationCanvas.width - (fontSize/2).round(), destinationCanvas.height - fontSize, 6);
+
     }
 
     Future<Null> renderSymbols(CanvasElement destinationCanvas) async {
@@ -101,31 +107,24 @@ class Card {
         }else if(value == 4) {
             await renderFourFront(destinationCanvas);
         }else if(value == 5) {
-            await renderFourFront(destinationCanvas);
+            await renderFiveFront(destinationCanvas);
         }else if(value == 6) {
-            await renderFourFront(destinationCanvas);
+            await renderFiveFront(destinationCanvas);
         }else if(value == 7) {
-            await renderFourFront(destinationCanvas);
+            await renderFiveFront(destinationCanvas);
         }else if(value == 8) {
-            await renderFourFront(destinationCanvas);
+            await renderFiveFront(destinationCanvas);
         }else if(value == 9) {
-            await renderFourFront(destinationCanvas);
+            await renderFiveFront(destinationCanvas);
         }else if(value == 10) {
-            await renderFourFront(destinationCanvas);
+            await renderFiveFront(destinationCanvas);
         }else {
             await renderAceFront(destinationCanvas);
         }
 
-        await renderNumberSymbol(destinationCanvas);
 
     }
 
-    Future<Null> renderNumberSymbol(CanvasElement destinationCanvas) async {
-        CanvasElement symbol = await suit.getSymbol();
-        //just underneath number
-        destinationCanvas.context2D.drawImageScaled(symbol, fontSize/2, fontSize, symbol.width/6, symbol.height/6);
-        Renderer.drawUpsideDownAt(symbol, destinationCanvas, destinationCanvas.width - (fontSize/2).round(), destinationCanvas.height - fontSize, 6);
-    }
 
     Future<Null> renderAceFront(CanvasElement destinationCanvas) async {
         CanvasElement symbol = await suit.getSymbol();
@@ -159,8 +158,12 @@ class Card {
 
     Future<Null> renderFiveFront(CanvasElement destinationCanvas) async {
         CanvasElement symbol = await suit.getSymbol();
-        destinationCanvas.context2D.drawImageScaled(symbol, 10, 0, symbol.width/4, symbol.height/4);
-        destinationCanvas.context2D.drawImageScaled(symbol, 20, 0, symbol.width/4, symbol.height/4);
+        destinationCanvas.context2D.drawImageScaled(symbol, 50, 100, symbol.width/symbolDivider, symbol.height/symbolDivider);
+        destinationCanvas.context2D.drawImageScaled(symbol, 200, 100, symbol.width/symbolDivider, symbol.height/symbolDivider);
+        destinationCanvas.context2D.drawImageScaled(symbol, 130, 190, symbol.width/symbolDivider, symbol.height/symbolDivider);
+
+        Renderer.drawUpsideDownAt(symbol, destinationCanvas, 50 + (symbol.width/3).round(), 350, symbolDivider);
+        Renderer.drawUpsideDownAt(symbol, destinationCanvas, 200 + (symbol.width/3).round(), 350, symbolDivider);
     }
 
     Future<Null> renderSixFront(CanvasElement destinationCanvas) async {
