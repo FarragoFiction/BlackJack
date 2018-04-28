@@ -137,7 +137,7 @@ class Card {
         CanvasElement symbol = await suit.getSymbol();
         destinationCanvas.context2D.drawImageScaled(symbol, 130, 100, symbol.width/symbolDivider, symbol.height/symbolDivider);
         //todo this needs to be upside down
-        Renderer.drawUpsideDownAt(symbol, destinationCanvas, 130 + (symbol.width/3).round(), 300, symbolDivider);
+        Renderer.drawUpsideDownAt(symbol, destinationCanvas, 130 + (symbol.width/3).round(), 350, symbolDivider);
 
     }
 
