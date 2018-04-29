@@ -130,7 +130,7 @@ class Game {
         playerContainer = new TableCellElement();
         dealerContainer = new TableCellElement();
         quipContainer = new TableCellElement();
-        quipContainer.setInnerHtml("...");
+        quipContainer.setInnerHtml(" ");
         infoRow.append(quipContainer);
         trDealer.append(dealerContainer);
         trPlayer.append(playerContainer);
