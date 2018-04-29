@@ -26,6 +26,7 @@ class Game {
     bool dealerTookTurn = false;
     Action callBack;
     Game(List<Card> this.deck, Element this.container,Action this.callBack) {
+        setUpAudio();
         deck.shuffle(new Random());
         setUpPlayingField();
         player = new Player(deck, playerContainer);
@@ -34,6 +35,29 @@ class Game {
         container.append(buttonContainer);
         renderHitButton();
         renderStayButton();
+    }
+
+    void setUpAudio() {
+        DivElement controls = new DivElement();
+        AudioElement blowup = new AudioElement();
+        blowup.classes.add("FX");
+
+        SourceElement mp3 = new SourceElement();
+        mp3.src = "music/BlackJack.mp3";
+        mp3.type = "audio/mpeg";
+
+        SourceElement ogg = new SourceElement();
+        mp3.src = "music/BlackJack.ogg";
+        mp3.type = "audio/ogg";
+
+        blowup.volume = 0.1;
+        blowup.append(mp3);
+        blowup.append(ogg);
+        blowup.loop = true;
+        blowup.autoplay = true;
+        blowup.controls = true;
+        controls.append(blowup);
+        container.append(controls);
     }
 
     void start() {
