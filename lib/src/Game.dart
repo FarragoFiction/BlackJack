@@ -50,7 +50,7 @@ class Game {
         mp3.src = "music/BlackJack.ogg";
         mp3.type = "audio/ogg";
 
-        blowup.volume = 0.1;
+        blowup.volume = 0.02;
         blowup.append(mp3);
         blowup.append(ogg);
         blowup.loop = true;
