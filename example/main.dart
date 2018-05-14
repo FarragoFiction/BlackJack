@@ -3,7 +3,7 @@ import 'package:RenderingLib/RendereringLib.dart';
 import "dart:html";
 import "dart:async";
 Element container;
-Game game;
+BlackJackGame game;
 
 DivElement div;
 main() {
@@ -21,7 +21,7 @@ void clearDiv() {
 Future<Null> start() async{
     await Loader.preloadManifest();
     clearDiv();
-    game = new Game(Card.getFreshDeck(),div, finishGame);
+    game = new BlackJackGame(Card.getFreshDeck(),div, finishGame);
     game.start();
 }
 

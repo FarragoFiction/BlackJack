@@ -9,6 +9,7 @@
       <excludeFolder url="file://$MODULE_DIR$/example/images/Cards/packages" />
       <excludeFolder url="file://$MODULE_DIR$/example/images/packages" />
       <excludeFolder url="file://$MODULE_DIR$/example/manifest/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/music/packages" />
       <excludeFolder url="file://$MODULE_DIR$/example/packages" />
       <excludeFolder url="file://$MODULE_DIR$/packages" />
       <excludeFolder url="file://$MODULE_DIR$/test/packages" />

@@ -4,7 +4,12 @@ import "Player.dart";
 import "Dealer.dart";
 import "dart:html";
 
-class Game {
+class BlackJackGame {
+
+    //from player's persepective
+    static String WON = "WON";
+    static String LOST = "LOST";
+    static String TIED = "TIED";
 
     Element playerContainer;
     Element dealerContainer;
@@ -21,11 +26,13 @@ class Game {
     Element container;
     ButtonElement hitButton;
     ButtonElement stayButton;
-    //from player's persepctive
-    bool lost = false;
+
+    //from player's persepective
+    String result;
+
     bool dealerTookTurn = false;
     Action callBack;
-    Game(List<Card> this.deck, Element this.container,Action this.callBack) {
+    BlackJackGame(List<Card> this.deck, Element this.container,Action this.callBack) {
         setUpAudio();
         deck.shuffle(new Random());
         setUpPlayingField();
@@ -70,7 +77,7 @@ class Game {
             hitButton.disabled = true;
             stayButton.disabled = true;
             checkResult(); //did i already go over
-            if(!lost) {
+            if(result != LOST) {
                 handleDealersTurn(); //game is done
                 dealerTookTurn = true;
                 checkResult();
@@ -81,7 +88,7 @@ class Game {
     void youLose() {
         DivElement resultsDiv = new DivElement();
         resultsDiv.text = "YOU LOSE!!!";
-        lost = true;
+        result = LOST;
         container.append(resultsDiv);
         flipCards();
         quip();
@@ -92,7 +99,19 @@ class Game {
         if(dealerTookTurn) {
             DivElement resultsDiv = new DivElement();
             resultsDiv.text = "YOU WIN!!!";
-            lost = false;
+            result = WON;
+            container.append(resultsDiv);
+            flipCards();
+            quip();
+            callBack();
+        }
+    }
+
+    void youTIE() {
+        if(dealerTookTurn) {
+            DivElement resultsDiv = new DivElement();
+            resultsDiv.text = "YOU TIED?";
+            result = TIED;
             container.append(resultsDiv);
             flipCards();
             quip();
@@ -104,7 +123,7 @@ class Game {
         DivElement quipElement = new DivElement();
         String quipText = "";
         Random rand = new Random();
-        if(lost) { //if player lost, i won
+        if(result == LOST) { //if player lost, i won
             quipText = rand.pickFrom(dealerWonQuips);
         }else {
             quipText = rand.pickFrom(dealerLostQuips);
@@ -125,7 +144,9 @@ class Game {
             youLose();
         }else if(dealer.hand.isOver21) {
             youWin();
-        }else if(dealer.hand.value >= player.hand.value) {
+        }else if(dealer.hand.value == player.hand.value) {
+            youTIE();
+        }else if(dealer.hand.value > player.hand.value) {
             if(dealerTookTurn) youLose();
         }else if(player.hand.value > dealer.hand.value) {
             if(dealerTookTurn) youWin();
