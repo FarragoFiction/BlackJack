@@ -19,7 +19,6 @@ void clearDiv() {
 }
 
 Future<Null> start() async{
-    await Loader.preloadManifest();
     clearDiv();
     game = new BlackJackGame(Card.getFreshDeck(),div, finishGame);
     game.start();

@@ -1,6 +1,7 @@
 import "Player.dart";
 import 'package:BlackJack/src/Card.dart';
 import "dart:html";
+import 'package:CommonLib/Random.dart';
 import 'package:RenderingLib/RendereringLib.dart';
 
 class Dealer extends Player{
