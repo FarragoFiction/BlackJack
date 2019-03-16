@@ -93,7 +93,7 @@ class Card {
         //translate canvas such that where you want to draw the number is the origin
         //that way it rotates correctly
         destinationCanvas.context2D.translate(destinationCanvas.width- fontSize/2, destinationCanvas.height - fontSize);
-        destinationCanvas.context2D.rotate(180*Math.PI/180);
+        destinationCanvas.context2D.rotate(180*Math.pi/180);
         destinationCanvas.context2D.fillText(symbolValue,0, 0);
         destinationCanvas.context2D.restore();
 
